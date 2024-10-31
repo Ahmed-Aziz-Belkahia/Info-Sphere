@@ -1,0 +1,406 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- page title -->
+    <title>Procus - Creative Agency HTML Template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}">
+
+    <!-- css files -->
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body class="default">
+    <!-- preloader starts -->
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
+
+    <div class="procus-cursor"></div>
+    <div class="procus-cursor2"></div>
+
+    <div class="theme-color-switch">
+        <input type="checkbox" class="checkbox" id="checkbox">
+        <label for="checkbox" class="checkbox-label">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+            <span class="ball"></span>
+        </label>
+    </div>
+
+    <!-- header area starts -->
+    <header class="header-area">
+        <!-- menu area -->
+        <div class="menu-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2">
+                        <div class="logo-area">
+                            <a class="IMAlogo" href="{% url "home" %}"><img src="{% static "assets/logo.png" %}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 d-none d-lg-block">
+                        <nav id="mobile-menu">
+                            <ul class="main-menu">
+                                <li><a href="{% url 'home' %}">home</a></li>
+                                <li><a href="{% url "services" %}">services</a></li>
+                                <li><a href="{% url "blog" %}">blog</a></li>
+                                <li><a href="{% url "contact-us" %}">contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="nav-right-content">
+                            <a href="{% url "contact-us" %}" class="primary-btn">Let’s Talk <span><i class="ri-arrow-right-up-line"></i></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-menu"></div>
+        </div>
+    </header>
+
+    <!-- breadcrumb starts -->
+    <section class="breadcrumb-section" style="background-image: url({% static 'assets/images/breadcrumb-bg.png)' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>our services</h1>
+                    <ul class="breadcrumb-meta">
+                        <li><a href="{% url 'home' %}">home</a></li>
+                        <li><span><i class="fa-solid fa-angle-right"></i></span></li>
+                        <li class="active">services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- service area starts -->
+    <section class="service-area pt-110 pb-90">
+        <img src="{% static 'assets/images/service-3d.png' %}" alt="service-3d" class="service-3d">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="section-top text-center">
+                        <h2>We Provide Top Notch <span>Services</span> For You</h2>
+                        <p class="mt-20">Explore a world of creativity, strategy, and tech with our range of services, all aimed at boosting your brand. From eye-catching designs to smart strategies.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-60">
+                <div class="col-lg-12">
+                    <ul class="accordion-list">
+                        {% for service in services %}
+                        <li class="wow fadeInUp" data-wow-delay=".{{forloop.counter}}s">
+                            <h3><span class="space-right">{{forloop.counter}}</span>{{service.title}}</h3>
+                            <div class="answer">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <p>{{service.text}}</p>
+                                        <a href="{% url "service" url_title=service.url_title %}" class="primary-btn mt-20">Learn More <span><i class="ri-arrow-right-up-line"></i></span></a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img src="{{service.out_image.url}}" alt="service-image" class="service-image">
+                                    </div>
+                                </div>                            
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- working process area starts -->
+    <section class="working-process-services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 wow fadeInLeft" data-wow-delay=".2s">
+                    <div class="working-process-left pt-110 pb-120">
+                        <div class="section-top">
+                            <h2>Our <span>Process</span></h2>
+                            <p class="mt-20">Explore the intricate gears of Procus Agency's workflow, where creativity intertwines with strategy to craft remarkable journeys.</p>
+                        </div>
+                        <div class="working-process-image mt-60">
+                            <img src="{% static 'assets/images/working-process-image.png' %}" alt="working-process-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-3">
+                    <div class="working-process-slider">
+                        <div class="working-process-single-slide">
+                            <h3>1. Initial Consultation</h3>
+                            <p class="mt-20">During the initial consultation, we engage with clients to thoroughly understand their unique needs and goals. This foundational step ensures we align our strategies with their vision and objectives.</p>
+                        </div>
+                        <div class="working-process-single-slide">
+                            <h3>2. Market Research</h3>
+                            <p class="mt-20">Our market research phase involves a comprehensive analysis of competitors and the target audience. By gathering insights on market trends and user behavior, we develop informed strategies that resonate with the intended audience.</p>
+                        </div>
+                        <div class="working-process-single-slide">
+                            <h3>3. Goal Setting</h3>
+                            <p class="mt-20">In the goal-setting phase, we define clear, measurable objectives and success criteria. This structured approach allows us to track progress effectively and ensures that our efforts are focused on delivering tangible results.</p>
+                        </div>
+                        <div class="working-process-single-slide">
+                            <h3>4. Strategy Development</h3>
+                            <p class="mt-20">We craft a tailored strategy that incorporates the insights gained from our research and aligns with the established goals. This step outlines the specific actions needed to achieve success and sets the direction for execution.</p>
+                        </div>
+                        <div class="working-process-single-slide">
+                            <h3>5. Implementation and Optimization</h3>
+                            <p class="mt-20">In this phase, we execute the defined strategy while continuously monitoring performance metrics. We make data-driven adjustments to optimize results, ensuring that the project evolves effectively and meets client expectations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- portfolio area starts -->
+    {% comment %} <section class="portfolio-area py-110" style="background-image: url({% static 'assets/images/portfolio-bg.png)' %}">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-5 col-lg-6 wow fadeInLeft" data-wow-delay=".2s">
+                    <div class="section-top">
+                        <h2>Let’s Dive into Our <span>Creative</span> Showcase</h2>
+                        <p class="mt-20">A showcase of our most inspiring projects. Each one is a journey of innovation, passion, and bold creativity.</p>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6 wow fadeInRight" data-wow-delay=".2s">
+                    <div class="section-top-btn">
+                        <a href="{% url "cases" %}" class="secondary-btn">See More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-60">
+                <div class="col-12">
+                    <div class="portfolio-slider">
+
+                        {% for case in cases %}
+                        <div class="portfolio-single">
+                            <div class="portfolio-image">
+                                <a href="{% url "cases" %}"><img src="{{case.left_big_image.url}}" alt="portfolio-image"></a>
+                                <a href="{% url "case" url_title=case.url_title %}" class="portfolio-btn">view details <span><i class="fas fa-arrow-right"></i></span></a>
+                            </div>
+                            <div class="portfolio-content mt-20">
+                                <h3><a href="{% url "cases" %}">{{case.title}}</a></h3>
+                                <p class="mt-10">{{case.small_overview}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+
+    <!-- testimonial area starts -->
+    {% comment %} <section class="testimonial-area pt-110 pb-120" style="background-image: url({% static 'assets/images/testimonial-test.png)' %}">
+        <img src="{% static 'assets/images/testimonial-3d.png' %}" alt="testimonial-3d" class="testimonial-3d">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="section-top text-center">
+                        <h2>What <span>client say</span> about us</h2>
+                        <p class="mt-20">Get to know the talented individuals who make our company thrive. Our diverse team brings together a wealth of expertise.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-60">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="testimonial-slider">
+                        {% for client in clients %}
+                            <div class="testimonial-slide">
+                                <div class="testimonial-slide-bg dark-version" style="background-image: url({% static 'assets/images/testimonial-slide-bg.png)' %}"></div>
+                                <div class="testimonial-slide-bg light-version" style="background-image: url({% static 'assets/images/testimonial-slide-light-bg.png)' %}"></div>
+                                <div class="testimonial-quote text-center">
+                                    <span class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+                                    <span class="quote-text">{{client.testimonial}}</span>
+                                </div>
+                                <div class="testimonial-content">
+                                    <div class="content-left">
+                                        <div class="author-img">
+                                            <img src="{{client.image.url}}" alt="author-image">
+                                        </div>
+                                        <div class="author-text">
+                                            <h4>{{client.name}}</h4>
+                                            <p>{{client.description}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="content-right">
+                                        <div class="author-text">
+                                            <h4>{{client.bussiness_name}}</h4>
+                                            <p>{{client.bussiness_role}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+    
+    <!-- marquee area starts -->
+    <div class="custom-marquee">
+        <div class="marquee-container">
+            <div class="marquee">
+                <div class="primary-bg">
+                    <div class="marquee-content marquee-row-1">
+                        <span><i class="ri-gemini-fill"></i> Brand Strategy <span></span><i class="ri-gemini-fill"></i> Digital Solutions <span></span><i class="ri-gemini-fill"></i> Branding <span></span><i class="ri-gemini-fill"></i> Development <span></span><i class="ri-gemini-fill"></i> Client Success <span></span><i class="ri-gemini-fill"></i> Designing <span></span><i class="ri-gemini-fill"></i> Innovative Approach <span></span><i class="ri-gemini-fill"></i> User Experience <span></span><i class="ri-gemini-fill"></i> Content Management </span>
+                        <span><i class="ri-gemini-fill"></i> Brand Strategy <span></span><i class="ri-gemini-fill"></i> Digital Solutions <span></span><i class="ri-gemini-fill"></i> Branding <span></span><i class="ri-gemini-fill"></i> Development <span></span><i class="ri-gemini-fill"></i> Client Success <span></span><i class="ri-gemini-fill"></i> Designing <span></span><i class="ri-gemini-fill"></i> Innovative Approach <span></span><i class="ri-gemini-fill"></i> User Experience <span></span><i class="ri-gemini-fill"></i> Content Management </span>
+                        <span><i class="ri-gemini-fill"></i> Brand Strategy <span></span><i class="ri-gemini-fill"></i> Digital Solutions <span></span><i class="ri-gemini-fill"></i> Branding <span></span><i class="ri-gemini-fill"></i> Development <span></span><i class="ri-gemini-fill"></i> Client Success <span></span><i class="ri-gemini-fill"></i> Designing <span></span><i class="ri-gemini-fill"></i> Innovative Approach <span></span><i class="ri-gemini-fill"></i> User Experience <span></span><i class="ri-gemini-fill"></i> Content Management </span>
+                    </div>
+                </div>
+                <div class="black-bg">
+                    <div class="marquee-content marquee-row-2">
+                        <span><i class="ri-gemini-fill"></i> Brand Strategy <span></span><i class="ri-gemini-fill"></i> Digital Solutions <span></span><i class="ri-gemini-fill"></i> Branding <span></span><i class="ri-gemini-fill"></i> Development <span></span><i class="ri-gemini-fill"></i> Client Success <span></span><i class="ri-gemini-fill"></i> Designing <span></span><i class="ri-gemini-fill"></i> Innovative Approach <span></span><i class="ri-gemini-fill"></i> User Experience <span></span><i class="ri-gemini-fill"></i> Content Management </span>
+                        <span><i class="ri-gemini-fill"></i> Brand Strategy <span></span><i class="ri-gemini-fill"></i> Digital Solutions <span></span><i class="ri-gemini-fill"></i> Branding <span></span><i class="ri-gemini-fill"></i> Development <span></span><i class="ri-gemini-fill"></i> Client Success <span></span><i class="ri-gemini-fill"></i> Designing <span></span><i class="ri-gemini-fill"></i> Innovative Approach <span></span><i class="ri-gemini-fill"></i> User Experience <span></span><i class="ri-gemini-fill"></i> Content Management </span>
+                        <span><i class="ri-gemini-fill"></i> Brand Strategy <span></span><i class="ri-gemini-fill"></i> Digital Solutions <span></span><i class="ri-gemini-fill"></i> Branding <span></span><i class="ri-gemini-fill"></i> Development <span></span><i class="ri-gemini-fill"></i> Client Success <span></span><i class="ri-gemini-fill"></i> Designing <span></span><i class="ri-gemini-fill"></i> Innovative Approach <span></span><i class="ri-gemini-fill"></i> User Experience <span></span><i class="ri-gemini-fill"></i> Content Management </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- get in touch area starts -->
+    <div class="get-in-touch-area" style="background-image: url({% static 'assets/images/get-in-touch-bg.png)' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeIn" data-wow-delay=".2s">
+                    <a href="{% url "contact-us" %}" class="big-title"><span>Get in touch</span><span class="icon"><i class="ri-arrow-right-up-line"></i></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- footer area starts -->
+    <footer class="footer-area">
+        <!-- footer widget -->
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row footer-widget-wrapper pt-100 pb-70">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="footer-widget-box about-us">
+                            <a href="{% url 'home' %}" class="footer-logo">
+                                IMA
+                            </a>
+                            <a href="{% url 'home' %}" class="footer-logo logo-black">
+                                IMA
+                            </a>
+                            <p>We're a dynamic creative agency dedicated to crafting compelling narratives and innovative solutions that resonate with precision.</p>
+                            <ul class="footer-social">
+                                <li><a ><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a ><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a ><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a ><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a ><i class="fa-brands fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 offset-lg-1 offset-xl-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">Quick Links</h4>
+                            <ul class="footer-list">
+                                <li><a href="about.html">About us</a></li>
+                                <li><a href="{% url "members" %}">meet our team</a></li>
+                                <li><a href="{% url "cases" %}">case studies</a></li>
+                                <li><a href="{% url "blog" %}">latest blog</a></li>
+                                <li><a href="{% url "contact-us" %}">contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2">
+                        <div class="footer-widget-box list">
+                            <h4 class="footer-widget-title">our services</h4>
+                            <ul class="footer-list">
+                            <ul class="footer-list">
+                                {% for service in services %}
+                                    <li><a href="{% url "service" url_title=service.url_title %}">{{service.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 col-xl-2 offset-xl-1">
+                        <div class="footer-widget-box">
+                            <h4 class="footer-widget-title">Contact Us</h4>
+                            <ul class="footer-contact">
+                                <li><a ><span class="contact-icon"><i class="fa-solid fa-phone"></i></span> (123) 456789000</a></li>
+                                <li><a ><span class="contact-icon"><i class="fa-regular fa-envelope"></i></span><span> info@procus.com</span></a></li>
+                                <li><a ><span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span> 1498w Fluton ste, STE 2D Chicgo, IL 63867.</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="copyright-content">
+                    <div class="row">
+                        <div class="col-lg-6 align-self-center">
+                            <p class="copyright-text">
+                                Copyright &copy; <span id="date"></span> <a href="{% url 'home' %}"> Procus</a> Designed by Pointer Flow.
+                            </p>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            <ul class="footer-menu">
+                                <li><a href="{% url "terms" %}">Terms Of Services</a></li>
+                                <li><a href="{% url "privacy" %}">Privacy Policy</a></li>
+                                <li><a href="{% url "contact-us" %}">Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- back to top -->
+    <div class="back-to-top">
+        <span><i class="fa fa-angle-up"></i></span>
+    </div>
+
+    <!-- javascript files -->
+    <script src="{% static 'assets/js/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/font-awesome.js' %}"></script>
+    <script src="{% static 'assets/js/counterup.min.js' %}"></script>
+    <script src="{% static 'assets/js/magnific-popup.js' %}"></script>
+    <script src="{% static 'assets/js/mousemove.js' %}"></script>
+    <script src="{% static 'assets/js/meanmenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <script src="{% static 'assets/js/easing.min.js' %}"></script>
+    <script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'assets/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
